@@ -49,13 +49,13 @@
             <item name="config" xsi:type="array">
                 <!-- Bookmarks behaviour -->
                 <item name="storageConfig" xsi:type="array">
-                    <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks</item>
+                    <item name="provider" xsi:type="string">storelocator_store_listing.storelocator_store_listing.listing_top.bookmarks</item>
                     <item name="namespace" xsi:type="string">current</item>
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="controlVisibility" xsi:type="boolean">true</item>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">storelocator_store_listing.storelocator_store_listing.listing_top.bookmarks</item>
                         <item name="root" xsi:type="string">columns.${ $.index }</item>
                         <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
                     </item>
