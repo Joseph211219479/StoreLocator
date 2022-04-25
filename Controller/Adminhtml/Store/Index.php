@@ -18,14 +18,27 @@ class Index extends Action
      */
     const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
 
-    /**
-     * Index action
-     *
-     * @return void
-     */
-    public function execute(): void
+
+    protected $resultPageFactory = false;
+
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+    )
     {
-        $this->_view->loadLayout();
-        $this->_view->renderLayout();
+        parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
+    }
+
+
+    public function execute()
+    {
+       /* $this->_view->loadLayout();
+        $this->_view->renderLayout();*/
+
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->getConfig()->getTitle()->prepend((__('Store Locator')));
+
+        return $resultPage;
     }
 }

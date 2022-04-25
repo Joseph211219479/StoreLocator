@@ -49,14 +49,14 @@ class StoreLocatorActions extends Column
                     'label' => __('Edit'),
                     'hidden' => false,
                 ];
-                $item[$this->getData('name')]['delete'] = [
+                /*$item[$this->getData('name')]['delete'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'storelocator/store/delete',
                         ['id' => $item['joseph_storelocator_id']]
                     ),
                     'label' => __('Delete'),
                     'hidden' => false,
-                ];
+                ];*/
             }
         }
 

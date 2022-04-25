@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="admin">
-        <route id="store_locator_id" frontName="storelocator">
+        <route id="storelocator" frontName="storelocator">
             <module name="Joseph_StoreLocator"/>
         </route>
     </router>
