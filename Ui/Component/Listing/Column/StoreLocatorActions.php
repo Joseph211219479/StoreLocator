@@ -41,22 +41,22 @@ class StoreLocatorActions extends Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
-               /* $item[$this->getData('name')]['edit'] = [
+                $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'storelocator/store/edit',
                         ['id' => $item['joseph_storelocator_id']]
                     ),
                     'label' => __('Edit'),
                     'hidden' => false,
-                ];*/
-                /*$item[$this->getData('name')]['delete'] = [
+                ];
+                $item[$this->getData('name')]['delete'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'storelocator/store/delete',
                         ['id' => $item['joseph_storelocator_id']]
                     ),
                     'label' => __('Delete'),
                     'hidden' => false,
-                ];*/
+                ];
             }
         }
 

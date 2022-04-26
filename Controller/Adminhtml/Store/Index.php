@@ -28,9 +28,6 @@ class Index extends Action
 
     public function execute()
     {
-       /* $this->_view->loadLayout();
-        $this->_view->renderLayout();*/
-
         $resultPage = $this->resultPageFactory->create();
         $resultPage->getConfig()->getTitle()->prepend((__('Store Locator')));
 

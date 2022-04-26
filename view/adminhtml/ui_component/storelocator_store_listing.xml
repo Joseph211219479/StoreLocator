@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 
     <!-- main part of the grid -->
@@ -8,7 +9,9 @@
             <item name="deps" xsi:type="string">storelocator_store_listing.storelocator_store_listing_data_source</item>
         </item>
         <!-- define where to find the columns -->
+<!--
         <item name="spinner" xsi:type="string">storelocator_store_listing_columns</item>
+-->
 
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
@@ -132,8 +135,24 @@
                 </item>
             </argument>
         </column>
+        <column name="province">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">store</item>
+                    <item name="dataScope" xsi:type="string">province</item>
+                    <item name="label" xsi:type="string" translate="true">Province</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </column>
         <!-- action columns edit and delete -->
-        <!--<actionsColumn name="actions" class="Joseph\StoreLocator\Ui\Component\Listing\Column\StoreLocatorActions">
+        <actionsColumn name="actions" class="Joseph\StoreLocator\Ui\Component\Listing\Column\StoreLocatorActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
@@ -141,7 +160,6 @@
                     <item name="indexField" xsi:type="string">joseph_storelocator_id</item>
                 </item>
             </argument>
-        </actionsColumn>-->
+        </actionsColumn>
     </columns>
-
 </listing>

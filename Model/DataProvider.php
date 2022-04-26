@@ -2,8 +2,9 @@
 namespace Joseph\StoreLocator\Model;
 
 use Joseph\StoreLocator\Model\ResourceModel\Store\CollectionFactory;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
     protected $storeCollectionFactory;
 
@@ -25,7 +26,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     ) {
         $this->storeCollectionFactory = $storeCollectionFactory;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-
     }
 
     public function getData()
