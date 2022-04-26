@@ -18,7 +18,7 @@ class Store extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(Joseph\StoreLocator\Model\ResourceModel\Store::class);
+        $this->_init(\Joseph\StoreLocator\Model\ResourceModel\Store::class);
     }
 
 }

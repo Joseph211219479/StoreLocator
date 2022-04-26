@@ -3,10 +3,10 @@ namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 use Magento\Backend\App\Action;
 use Joseph\StoreLocator\Model\Store as Store;
 
-class NewAction extends \Magento\Backend\App\Action
+class NewAction extends Action
 {
     /**
-     * Edit A Contact Page
+     * Edit A Store Page
      *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -17,9 +17,9 @@ class NewAction extends \Magento\Backend\App\Action
         $this->_view->renderLayout();
 
         $storetData = $this->getRequest()->getParam('store');
-        if(is_array($storetData)) {
+        if (is_array($storetData)) {
             $contact = $this->_objectManager->create(Store::class);
-            $contact->setData($storetData)->save();
+            $contact->setData($storetData)->save();/*todo */
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('*/*/index');
         }

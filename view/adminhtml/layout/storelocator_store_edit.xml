@@ -4,7 +4,9 @@
     <update handle="editor"/>
     <body>
         <referenceContainer name="content">
+<!--
             <uiComponent name="storelocator_store_form"/>
+-->
         </referenceContainer>
     </body>
 </page>

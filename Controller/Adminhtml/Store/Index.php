@@ -13,11 +13,7 @@ use Magento\Backend\App\Action;
  */
 class Index extends Action
 {
-    /**
-     * Authorization level of a basic admin session
-     */
     const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
-
 
     protected $resultPageFactory = false;
 
@@ -29,7 +25,6 @@ class Index extends Action
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }
-
 
     public function execute()
     {

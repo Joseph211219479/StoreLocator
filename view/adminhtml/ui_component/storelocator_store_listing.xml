@@ -24,14 +24,10 @@
     <dataSource name="storelocator_store_listing.storelocator_store_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <!-- unique name for the grid -->
-<!--
             <argument name="class" xsi:type="string">StoreLocatorGridDataProvider</argument>
--->
-            <argument name="class" xsi:type="string">Joseph\StoreLocator\Model\ResourceModel\Store\Collection</argument>
-
             <!-- name of the data source same as in argument/js_config/provider -->
             <argument name="name" xsi:type="string">storelocator_store_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">store_locator_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">joseph_storelocator_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
