@@ -3,8 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
-namespace Joseph\StoreLocator\Block\Adminhtml\Edit;
+namespace Joseph\StoreLocator\Block\Adminhtml\Store\Edit;
 
 class GenericButton
 {

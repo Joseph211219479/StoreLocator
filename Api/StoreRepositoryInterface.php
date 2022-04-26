@@ -20,7 +20,7 @@ interface StoreRepositoryInterface
     public function save(StoreInterface $store);
 
     /**
-     * @param \Amasty\Example\Api\Data\StoreInterface $store
+     * @param \Joseph\StoreLocator\Api\Data\StoreInterface $store
      * @return void
      */
     public function delete(StoreInterface $store);
