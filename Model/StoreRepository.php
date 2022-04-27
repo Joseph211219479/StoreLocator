@@ -1,4 +1,5 @@
 <?php
+namespace Joseph\StoreLocator\Model;
 
 use Joseph\StoreLocator\Api\StoreRepositoryInterface;
 

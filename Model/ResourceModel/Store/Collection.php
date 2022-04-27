@@ -1,5 +1,4 @@
 <?php
-
 namespace Joseph\StoreLocator\Model\ResourceModel\Store;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
