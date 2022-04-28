@@ -6,14 +6,15 @@
 
 namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 
-use Magento\Backend\App\Action;
+//use Magento\Backend\App\Action;
+use Joseph\StoreLocator\Controller\Adminhtml\Store\Store;
 
 /**
  * Class Index
  */
-class Index extends Action
+class Index extends Store
 {
-    const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
+   // const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
 
     protected $resultPageFactory = false;
 

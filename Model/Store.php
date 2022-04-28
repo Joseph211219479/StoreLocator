@@ -1,10 +1,8 @@
 <?php
-
 namespace Joseph\StoreLocator\Model;
 
 use Magento\Cron\Exception;
 use Magento\Framework\Model\AbstractModel;
-
 
 class Store extends AbstractModel
 {

@@ -7,12 +7,6 @@ namespace Joseph\StoreLocator\Block\Adminhtml\Store\Edit;
 
 class GenericButton
 {
-
-    /**
-     * Key for current catalog rule in registry
-     */
-    const CURRENT_CATALOG_RULE_ID = 'current_promo_catalog_rule';
-
     /**
      * Url Builder
      *

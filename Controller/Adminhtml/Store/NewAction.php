@@ -1,19 +1,10 @@
 <?php
 namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 
-use Magento\Backend\App\Action;
-use Joseph\StoreLocator\Model\Store as Store;
+use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
 
-class NewAction extends Action
+class NewAction extends abstractStore
 {
-
-    protected $_storeFactory;
-
-    protected function _construct(\Joseph\StoreLocator\Api\StoreRepositryInterface  $storeFactory){
-        $this->_storeFactory = $storeFactory;
-    }
-
-
     /**
      * Edit A Store Page
      *
@@ -26,13 +17,13 @@ class NewAction extends Action
         $this->_view->renderLayout();
 
         //todo use factory
-        $storetData = $this->getRequest()->getParam('store');
-        if (is_array($storetData)) {
+        $storeData = $this->getRequest()->getParam('store');
+        if (is_array($storeData)) {
             //$store = $this->_objectManager->create(Store::class);
             //$store->setData($storetData)->save();/*todo */
 
             $store = $this->_storeFactory->create();
-            $store->save($storetData);/*todo debug*/
+            $store->save($storeData);/*todo debug*/
 
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('*/*/index');

@@ -2,63 +2,66 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">joseph_storelocator_form.storelocator_store_form_data_source</item>
-            <item name="deps" xsi:type="string">joseph_storelocator_form.storelocator_store_form_data_source</item>
+            <item name="provider" xsi:type="string">storelocator_store_form.storelocator_store_form_data_source</item>
+            <item name="deps" xsi:type="string">storelocator_store_form.storelocator_store_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="label" xsi:type="string" translate="true">Store Locator: Manage Store</item>
         <item name="layout" xsi:type="array">
             <item name="type" xsi:type="string">tabs</item>
         </item>
-
-        <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Joseph\StoreLocator\Block\Adminhtml\Store\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">Joseph\StoreLocator\Block\Adminhtml\Store\Edit\DeleteButton</item>
-            <item name="reset" xsi:type="string">Joseph\StoreLocator\Block\Adminhtml\Store\Edit\ResetButton</item>
-            <item name="save" xsi:type="string">Joseph\StoreLocator\Block\Adminhtml\Store\Edit\SaveButton</item>
-        </item>
-
-
-
-
-     <!--   <settings>
-            <buttons>
-                <button name="delete" class="Magento\CatalogRule\Block\Adminhtml\Edit\DeleteButton"/>
-                <button name="save_and_apply" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveAndApplyButton"/>
-                <button name="save_and_continue" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveAndContinueButton"/>
-                <button name="reset" class="Magento\CatalogRule\Block\Adminhtml\Edit\ResetButton"/>
-                <button name="save" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveButton"/>
-                <button name="back">
-                    <url path="*/*/"/>
-                    <class>back</class>
-                    <label translate="true">Back</label>
-                </button>
-            </buttons>
-            <namespace>catalog_rule_form</namespace>
-            <dataScope>data</dataScope>
-            <deps>
-                <dep>catalog_rule_form.catalog_rule_form_data_source</dep>
-            </deps>
-        </settings>
-        -->
-
-
-
-
     </argument>
 
-    <dataSource name="joseph_storelocator_form.storelocator_store_form_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Joseph\StoreLocator\Model\DataProvider</argument>
-            <argument name="name" xsi:type="string">storelocator_store_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">joseph_storelocator_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-        </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="Joseph\StoreLocator\Block\Adminhtml\Store\Edit\DeleteButton"/>
+            <button name="reset" class="Joseph\StoreLocator\Block\Adminhtml\Store\Edit\ResetButton"/>
+            <button name="save" class="Joseph\StoreLocator\Block\Adminhtml\Store\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>storelocator_store_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>storelocator_store_form.storelocator_store_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="storelocator_store_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
+        <settings>
+            <!--todo: change when moving action controllers to actions dir-->
+            <submitUrl path="storelocator/store/save"/>
+        </settings>
+        <dataProvider class="Joseph\StoreLocator\Model\DataProvider\Store" name="storelocator_store_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>joseph_storelocator_id</primaryFieldName>
+            </settings>
+        </dataProvider>
     </dataSource>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <fieldset name="store">
         <argument name="data" xsi:type="array">
@@ -98,6 +101,30 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string">Email</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">store</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Telephone</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">store</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="province">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Province</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>

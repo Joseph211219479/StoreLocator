@@ -6,12 +6,13 @@ use Joseph\StoreLocator\Api\Data\StoreInterface;
 
 interface StoreRepositoryInterface
 {
-    /**
-     * @param int $id
+     /**
+     * @param int $storeId
      * @return \Joseph\StoreLocator\Api\Data\StoreInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @since 100.1.0
      */
-    public function getById($id);
+    public function get($storeId);
 
     /**
      * @param \Joseph\StoreLocator\Api\Data\StoreInterface $store
@@ -24,6 +25,14 @@ interface StoreRepositoryInterface
      * @return void
      */
     public function delete(StoreInterface $store);
+
+    /**
+     * @param int $ruleId
+     * @return bool
+     * @throws \Magento\Framework\Exception\CouldNotDeleteException
+     * @since 100.1.0
+     */
+    public function deleteById($ruleId);
 
     /**
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria

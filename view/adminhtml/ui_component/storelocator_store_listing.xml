@@ -9,9 +9,8 @@
             <item name="deps" xsi:type="string">storelocator_store_listing.storelocator_store_listing_data_source</item>
         </item>
         <!-- define where to find the columns -->
-<!--
+
         <item name="spinner" xsi:type="string">storelocator_store_listing_columns</item>
--->
 
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
@@ -45,7 +44,7 @@
     </dataSource>
 
     <!-- define the columns of my grid -->
-    <columns name="storelocator_store_columns">
+    <columns name="storelocator_store_listing_columns">
 
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">

@@ -8,17 +8,11 @@ namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Backend\App\Action;
+use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
 
 
-class Delete extends Action implements HttpPostActionInterface
+class Delete extends abstractStore implements HttpPostActionInterface
 {
-    protected $_storeFactory;
-
-    protected function _construct(\Joseph\StoreLocator\Api\StoreRepositryInterfaceFactory  $storeFactory){
-        $this->_storeFactory = $storeFactory;
-    }
-
     /**
      * @return void
      */
@@ -31,7 +25,7 @@ class Delete extends Action implements HttpPostActionInterface
                 $store->deleteById($id);
 
                 $this->messageManager->addSuccessMessage(__('You deleted the rule.'));
-                $this->_redirect('catalog_rule/*/');
+                $this->_redirect(parent::ROUTE_FRONTNAME.'/*/');
                 return;
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
@@ -40,12 +34,12 @@ class Delete extends Action implements HttpPostActionInterface
                     __('We can\'t delete this rule right now. Please review the log and try again.')
                 );
                 $this->_objectManager->get(\Psr\Log\LoggerInterface::class)->critical($e);
-                $this->_redirect('catalog_rule/*/edit', ['id' => $this->getRequest()->getParam('id')]);
+                $this->_redirect(parent::ROUTE_FRONTNAME.'/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
-        $this->messageManager->addErrorMessage(__('We can\'t find a rule to delete.'));
+        $this->messageManager->addErrorMessage(__('We can\'t find a store to delete.'));
 
-        $this->_redirect('*/*/');
+        $this->_redirect(parent::ROUTE_FRONTNAME.'/*/');
     }
 }
