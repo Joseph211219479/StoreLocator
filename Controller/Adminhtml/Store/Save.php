@@ -11,6 +11,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
+use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
 
 /**
  * Save action for catalog rule
@@ -27,13 +28,16 @@ class Save extends abstractStore implements HttpPostActionInterface
     /**
      * @param Context $context
      * @param DataPersistorInterface $dataPersistor
+     * @param StoreRepositoryInterfaceFactory $storeFactory
      */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
+        StoreRepositoryInterfaceFactory $storeFactory
     ) {
         $this->dataPersistor = $dataPersistor;
         parent::__construct($context);
+        parent::_construct(  $storeFactory);
     }
 
     /**

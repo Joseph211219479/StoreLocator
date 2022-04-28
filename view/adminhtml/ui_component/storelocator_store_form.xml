@@ -47,22 +47,6 @@
         </dataProvider>
     </dataSource>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <fieldset name="store">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -70,7 +54,6 @@
             </item>
         </argument>
 
-        <!-- This field represents form id and is hidden -->
         <field name="joseph_storelocator_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -82,7 +65,6 @@
             </argument>
         </field>
 
-        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
         <field name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -95,8 +77,6 @@
             </argument>
         </field>
 
-
-        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
         <field name="email">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -132,6 +112,5 @@
                 </item>
             </argument>
         </field>
-
     </fieldset>
 </form>
