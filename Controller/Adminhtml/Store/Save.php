@@ -11,7 +11,8 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
-use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
+use Joseph\StoreLocator\Api\StoreRepositoryInterface;
+use Joseph\StoreLocator\Model\StoreFactory;
 
 /**
  * Save action for catalog rule
@@ -25,19 +26,24 @@ class Save extends abstractStore implements HttpPostActionInterface
      */
     protected $dataPersistor;
 
+    protected $storeRepository;
+
     /**
      * @param Context $context
      * @param DataPersistorInterface $dataPersistor
-     * @param StoreRepositoryInterfaceFactory $storeFactory
+     * @param StoreFactory $storeFactory
      */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
-        StoreRepositoryInterfaceFactory $storeFactory
+        StoreFactory $storeFactory,
+        StoreRepositoryInterface $storeRepository
     ) {
         $this->dataPersistor = $dataPersistor;
+        $this->storeRepository = $storeRepository;
+
         parent::__construct($context);
-        parent::_construct(  $storeFactory);
+        parent::_construct($storeFactory);
     }
 
     /**
@@ -51,41 +57,27 @@ class Save extends abstractStore implements HttpPostActionInterface
     {
         if ($this->getRequest()->getPostValue()) {
 
-            /** @var \Joseph\StoreLocator\Api\StoreRepositoryInterface $storeRepository */
-            $storeRepository = $this->_storeFactory->create();
-
+           // $storeRepository = $this->_storeFactory->create();
             try {
                 $data = $this->getRequest()->getPostValue();
 
-                $id = $this->getRequest()->getParam('store_id');
-                if ($id) {
-                    $this->_model = $storeRepository->get($id);
-                }
+                if(isset($data['store'])){
+                    if(isset($data['store']['id'])){
 
-                /*todo: how does validatorData work ?*/
-                $validateResult = $this->_model->validateData(new \Magento\Framework\DataObject($data));
-                if ($validateResult !== true) {
-                    foreach ($validateResult as $errorMessage) {
-                        $this->messageManager->addErrorMessage($errorMessage);
+                       // $this->_model = $storeRepository->get($data['store']['id']);
+                        $this->_model->setStoreId($data['store']["id"]);
                     }
-                    $this->_getSession()->setPageData($data);
-                    $this->dataPersistor->set('storelocator_store', $data);
-                    $this->_redirect(parent::ROUTE_FRONTNAME.'/*/edit', ['id' => $this->_model->getId()]);
-                    return;
+                    //$this->_model->setStoreId(3);//todo hardcoded to test
+                    $this->_model->setName($data['store']["name"]);
+                    $this->_model->setEmail($data['store']["email"]);
+                    $this->_model->setProvince($data['store']["province"]);
                 }
 
-                if (isset($data['store'])) {
-                    //why
-                   //unset($data['store']);
-                }
-
-                $this->_model->loadPost($data);
-
-                $this->_session()->setPageData($data);
-                //$this->_objectManager->get(\Magento\Backend\Model\Session::class)->setPageData($data);
                 $this->dataPersistor->set('storelocator_store', $data);
 
-                $storeRepository->save($this->_model);
+               // $this->_model->loadPost($data['store']); // loadPost is only for magento/rules ,maybe implement later
+
+                $this->storeRepository->save($this->_model);
 
                 $this->messageManager->addSuccessMessage(__('You saved the store.'));
                 $this->_objectManager->get(\Magento\Backend\Model\Session::class)->setPageData(false);

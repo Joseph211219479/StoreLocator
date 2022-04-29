@@ -21,4 +21,67 @@ interface StoreInterface
     const PROVINCE = 'province';
 
     const IS_ACTIVE = 'is_active';//todo :impl
+
+    /**#@-*/
+
+    /**
+     * Returns store id field
+     *
+     * @return int|null
+     * @since 100.1.0
+     */
+    public function getStoreId();
+
+    /**
+     * @param int $storeId
+     * @return $this
+     * @since 100.1.0
+     */
+    public function setStoreId($storeId);
+
+    /**
+     * Returns store name
+     *
+     * @return string
+     * @since 100.1.0
+     */
+    public function getName();
+
+    /**
+     * @param string $name
+     * @return $this
+     * @since 100.1.0
+     */
+    public function setName($name);
+
+    /**
+     * Returns store email
+     *
+     * @return string
+     * @since 100.1.0
+     */
+    public function getEmail();
+
+    /**
+     * @param string $email
+     * @return $this
+     * @since 100.1.0
+     */
+    public function setEmail($email);
+
+    /**
+     * Returns store name
+     *
+     * @return string
+     * @since 100.1.0
+     */
+    public function getProvince();
+
+    /**
+     * @param string $province
+     * @return $this
+     * @since 100.1.0
+     */
+    public function setProvince($province);
+
 }
