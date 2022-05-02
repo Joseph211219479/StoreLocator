@@ -12,7 +12,7 @@ interface StoreInterface
     /**#@+
      * Constants defined for keys of data array
      */
-    const RULE_ID = 'rule_id';
+    const STORE_ID = 'joseph_storelocator_id';
 
     const NAME = 'name';
 

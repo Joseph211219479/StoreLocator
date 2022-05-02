@@ -55,7 +55,7 @@ class Store extends AbstractDataProvider
             $this->loadedData[$store->getId()] = $store->getData();
             $this->dataPersistor->clear('catalog_rule');
         }*/
-        return $this->loadedData;
+        return isset($this->loadedData) ? $this->loadedData : null;
     }
 
     public function addFilter(\Magento\Framework\Api\Filter $filter)

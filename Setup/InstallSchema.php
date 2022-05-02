@@ -33,11 +33,11 @@ class InstallSchema implements InstallSchemaInterface
                     100,
                     ['nullable' => false, 'default' => 'simple'],
                     'Store Name'
-                )->addColumn( /*todo: check proper type for telephone, and length validation*/
+                )->addColumn(
                     'telephone',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    \Magento\Framework\DB\Ddl\Table::TYPE_NUMERIC,
                     100,
-                    ['nullable' => false, 'default' => 'simple'],
+                    ['nullable' => false, 'default' => 0000],
                     'Telephone'
                 )
                 ->addColumn(

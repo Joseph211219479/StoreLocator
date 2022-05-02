@@ -58,9 +58,9 @@ class StoreRepository implements StoreRepositoryInterface
      */
     public function save(StoreInterface $store)
     {
-        /*if($store->getStoreId()){
+        if($store->getStoreId()){
             $store = $this->get($store->getStoreId())->addData($store->getData());
-        }*/
+        }
 
         try{
             $this->storeResource->save($store);

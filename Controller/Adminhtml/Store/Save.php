@@ -62,10 +62,10 @@ class Save extends abstractStore implements HttpPostActionInterface
                 $data = $this->getRequest()->getPostValue();
 
                 if(isset($data['store'])){
-                    if(isset($data['store']['id'])){
+                    if(isset($data['store']['joseph_storelocator_id'])){
 
                        // $this->_model = $storeRepository->get($data['store']['id']);
-                        $this->_model->setStoreId($data['store']["id"]);
+                        $this->_model->setStoreId($data['store']["joseph_storelocator_id"]);
                     }
                     //$this->_model->setStoreId(3);//todo hardcoded to test
                     $this->_model->setName($data['store']["name"]);

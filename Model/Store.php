@@ -20,7 +20,7 @@ class Store extends AbstractModel implements StoreInterface
      */
     public function getStoreId()
     {
-        return $this->getData(self::RULE_ID);
+        return $this->getData(self::STORE_ID);
     }
 
     /**
@@ -28,7 +28,7 @@ class Store extends AbstractModel implements StoreInterface
      */
     public function setStoreId($storeId)
     {
-        $this->setData(self::RULE_ID, $storeId);
+        $this->setData(self::STORE_ID, $storeId);
     }
 
     /**
