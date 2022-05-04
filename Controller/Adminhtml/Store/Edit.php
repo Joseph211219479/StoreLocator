@@ -29,7 +29,11 @@ class Edit extends abstractStore implements HttpGetActionInterface
         \Magento\Backend\Model\Auth\SessionFactory $adminSession
     ) {
         parent::__construct($context);
-        parent::_construct(  $storeFactory);
+
+        $this->_storeFactory = $storeFactory;
+        if(!isset($this->_model)){
+            $this->_model = $storeFactory->create([]);//$this->_objectManager->create(\Joseph\StoreLocator\Model\Store::class);
+        }
 
         $this->adminSession = $adminSession;
     }

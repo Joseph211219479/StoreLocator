@@ -21,6 +21,8 @@ use Joseph\StoreLocator\Model\StoreFactory;
  */
 class Save extends abstractStore implements HttpPostActionInterface
 {
+    const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
+
     /**
      * @var DataPersistorInterface
      */
@@ -39,11 +41,18 @@ class Save extends abstractStore implements HttpPostActionInterface
         StoreFactory $storeFactory,
         StoreRepositoryInterface $storeRepository
     ) {
+        parent::__construct($context);
+
         $this->dataPersistor = $dataPersistor;
         $this->storeRepository = $storeRepository;
 
+        $this->_storeFactory = $storeFactory;
+        if(!isset($this->_model)){
+            $this->_model = $storeFactory->create([]);//$this->_objectManager->create(\Joseph\StoreLocator\Model\Store::class);
+        }
+
         parent::__construct($context);
-        parent::_construct($storeFactory);
+        //parent::_construct($storeFactory);
     }
 
     /**
@@ -62,14 +71,15 @@ class Save extends abstractStore implements HttpPostActionInterface
                 $data = $this->getRequest()->getPostValue();
 
                 if(isset($data['store'])){
+                    //todo move if to own function
                     if(isset($data['store']['joseph_storelocator_id'])){
-
-                       // $this->_model = $storeRepository->get($data['store']['id']);
-                        $this->_model->setStoreId($data['store']["joseph_storelocator_id"]);
+                        if($data['store']['joseph_storelocator_id'] != ""){
+                            $this->_model->setStoreId($data['store']["joseph_storelocator_id"]);
+                        }
                     }
-                    //$this->_model->setStoreId(3);//todo hardcoded to test
                     $this->_model->setName($data['store']["name"]);
                     $this->_model->setEmail($data['store']["email"]);
+                    $this->_model->setProvince($data['store']["telephone"]);
                     $this->_model->setProvince($data['store']["province"]);
                 }
 

@@ -17,6 +17,7 @@ class NewAction extends abstractStore
         $this->_view->renderLayout();
 
         //todo use factory
+        //todo remove , not used.
         $storeData = $this->getRequest()->getParam('store');
         if (is_array($storeData)) {
             //$store = $this->_objectManager->create(Store::class);

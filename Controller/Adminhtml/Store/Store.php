@@ -12,18 +12,12 @@ abstract class Store extends Action {
     const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
 
     protected $_storeFactory;
-    protected $_model;
+    //protected $_model;
 
     public function __construct(Context $context){
         parent::__construct($context);
     }
 
-    protected function _construct(StoreFactory  $storeFactory ){
-        $this->_storeFactory = $storeFactory;
-        if(!isset($this->_model)){
-            $this->_model = $storeFactory->create([]);//$this->_objectManager->create(\Joseph\StoreLocator\Model\Store::class);
-        }
-    }
 
     /**
      * Init action
