@@ -20,6 +20,8 @@ interface StoreInterface
 
     const PROVINCE = 'province';
 
+    const TELEPHONE = 'telephone';
+
     const IS_ACTIVE = 'is_active';//todo :impl
 
     /**#@-*/
@@ -68,6 +70,18 @@ interface StoreInterface
      * @since 100.1.0
      */
     public function setEmail($email);
+
+    /**
+     * @param $telephone
+     * @return mixed
+     */
+    public function setTelephone($telephone);
+
+    /**
+     * @return mixed
+     */
+    public function getTelephone();
+
 
     /**
      * Returns store name

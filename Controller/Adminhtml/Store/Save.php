@@ -79,7 +79,7 @@ class Save extends abstractStore implements HttpPostActionInterface
                     }
                     $this->_model->setName($data['store']["name"]);
                     $this->_model->setEmail($data['store']["email"]);
-                    $this->_model->setProvince($data['store']["telephone"]);
+                    $this->_model->setTelephone($data['store']["telephone"]);
                     $this->_model->setProvince($data['store']["province"]);
                 }
 

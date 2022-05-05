@@ -5,11 +5,6 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Store extends AbstractDb
 {
-    /*public function __construct(\Magento\Framework\Model\ResourceModel\Db\Context $context)
-    {
-        parent::__construct($context);
-    }*/
-
     /**
      * Initialize resource
      *

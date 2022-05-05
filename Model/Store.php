@@ -81,6 +81,22 @@ class Store extends AbstractModel implements StoreInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function setTelephone($telephone)
+    {
+        return $this->setData(self::TELEPHONE, $telephone);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTelephone()
+    {
+        return $this->getData(self::TELEPHONE);
+    }
+
+    /**
      * @inheritdoc
      */
     public function validateData(DataObject $dataObject)

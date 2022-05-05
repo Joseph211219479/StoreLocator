@@ -35,7 +35,7 @@ class InstallSchema implements InstallSchemaInterface
                     'Store Name'
                 )->addColumn(
                     'telephone',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_NUMERIC,
+                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     100,
                     ['nullable' => false, 'default' => 0000],
                     'Telephone'
