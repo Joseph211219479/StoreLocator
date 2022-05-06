@@ -49,7 +49,6 @@ class Edit extends abstractStore implements HttpGetActionInterface
         /** @var \Joseph\StoreLocator\Api\StoreRepositoryInterface $storeRepository */
         $storeRepository = $this->_storeFactory->create();
 
-
         if ($id) {
             try {
                 //does not work because get returns a array
@@ -63,24 +62,18 @@ class Edit extends abstractStore implements HttpGetActionInterface
 
         // set entered data if was error when we do save
         //todo get it to work with the factory
+        //$this->adminSession->create()
+        // $data = $this->adminSession->getPageData(true);
         $data = $this->_objectManager->get(\Magento\Backend\Model\Session::class)->getPageData(true);
-       // $data = $this->adminSession->create()->getPageData(true);
 
         if (!empty($data)) {
             $this->_model->addData($data);
         }
 
-     /*   $this->_model->getConditions()->setFormName('storelocator_store_form');
-        $this->_model->getConditions()->setJsFormObject(
-            $this->_model->getConditionsFieldSetId($this->_model->getConditions()->getFormName())
-        );*/
-
-       // $this->_coreRegistry->register('current_promo_catalog_rule', $this->_model);
-
         $this->_initAction();
         $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Store Locator: Store'));
         $this->_view->getPage()->getConfig()->getTitle()->prepend(
-            $this->_model->getRuleId() ? $this->_model->getName() : __('New Store')
+            $this->_model->getStoreId() ? $this->_model->getName() : __('Update Store')
         );
 
         $breadcrumb = $id ? __('Edit Store') : __('New Store');

@@ -46,14 +46,14 @@ class Delete extends abstractStore implements HttpGetActionInterface, CsrfAwareA
                 //$store = $this->_storeFactory->create();
                 $this->storeRepository->deleteById($id);
 
-                $this->messageManager->addSuccessMessage(__('You deleted the rule.'));
+                $this->messageManager->addSuccessMessage(__('You deleted the store.'));
                 $this->_redirect(parent::ROUTE_FRONTNAME.'/*/');
                 return;
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(
-                    __('We can\'t delete this rule right now. Please review the log and try again.')
+                    __('We can\'t delete this store right now. Please review the log and try again.')
                 );
                 $this->_objectManager->get(\Psr\Log\LoggerInterface::class)->critical($e);
                 $this->_redirect(parent::ROUTE_FRONTNAME.'/*/edit', ['id' => $this->getRequest()->getParam('id')]);

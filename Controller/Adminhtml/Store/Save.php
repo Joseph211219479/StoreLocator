@@ -15,7 +15,6 @@ use Joseph\StoreLocator\Api\StoreRepositoryInterface;
 use Joseph\StoreLocator\Model\StoreFactory;
 
 /**
- * Save action for catalog rule
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -48,15 +47,14 @@ class Save extends abstractStore implements HttpPostActionInterface
 
         $this->_storeFactory = $storeFactory;
         if(!isset($this->_model)){
-            $this->_model = $storeFactory->create([]);//$this->_objectManager->create(\Joseph\StoreLocator\Model\Store::class);
+            $this->_model = $storeFactory->create([]);
         }
 
-        parent::__construct($context);
-        //parent::_construct($storeFactory);
+       // parent::__construct($context);
     }
 
     /**
-     * Execute save action from catalog rule
+     * Execute save action from store
      *
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
@@ -66,7 +64,6 @@ class Save extends abstractStore implements HttpPostActionInterface
     {
         if ($this->getRequest()->getPostValue()) {
 
-           // $storeRepository = $this->_storeFactory->create();
             try {
                 $data = $this->getRequest()->getPostValue();
 
@@ -84,8 +81,6 @@ class Save extends abstractStore implements HttpPostActionInterface
                 }
 
                 $this->dataPersistor->set('storelocator_store', $data);
-
-               // $this->_model->loadPost($data['store']); // loadPost is only for magento/rules ,maybe implement later
 
                 $this->storeRepository->save($this->_model);
 

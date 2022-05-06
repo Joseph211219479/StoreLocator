@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <route url="/V1/StoreLocatorById/:id" method="GET">
+        <service class="Joseph\StoreLocator\Api\StoreRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Joseph_StoreLocator::Store_Locator"/>
+        </resources>
+    </route>
+
+    <route url="/V1/StoreLocatorList/" method="GET">
+        <service class="Joseph\StoreLocator\Api\StoreRepositoryInterface" method="getListGroupedByProvince"/>
+        <resources>
+            <resource ref="Joseph_StoreLocator::Store_Locator"/>
+        </resources>
+    </route>
+</routes>

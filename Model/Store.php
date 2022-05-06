@@ -12,7 +12,7 @@ class Store extends AbstractModel implements StoreInterface
      */
     protected function _construct()
     {
-        $this->_init(\Joseph\StoreLocator\Model\ResourceModel\Store::class);
+        $this->_init(ResourceModel\Store::class);
     }
 
     /**
@@ -94,22 +94,5 @@ class Store extends AbstractModel implements StoreInterface
     public function getTelephone()
     {
         return $this->getData(self::TELEPHONE);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateData(DataObject $dataObject)
-    {
-        $result = parent::validateData($dataObject);
-        if ($result === true) {
-            $result = [];
-        }
-
-        $action = $dataObject->getData('simple_action');
-        $discount = $dataObject->getData('discount_amount');
-        $result = array_merge($result, $this->validateDiscount($action, $discount));
-
-        return !empty($result) ? $result : true;
     }
 }

@@ -5,7 +5,7 @@ namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
-use Joseph\StoreLocator\Model\StoreFactory;
+//use Joseph\StoreLocator\Model\StoreFactory;
 
 abstract class Store extends Action {
     const ROUTE_FRONTNAME = "storelocator";
@@ -17,7 +17,6 @@ abstract class Store extends Action {
     public function __construct(Context $context){
         parent::__construct($context);
     }
-
 
     /**
      * Init action

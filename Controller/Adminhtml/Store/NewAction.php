@@ -20,8 +20,6 @@ class NewAction extends abstractStore
         //todo remove , not used.
         $storeData = $this->getRequest()->getParam('store');
         if (is_array($storeData)) {
-            //$store = $this->_objectManager->create(Store::class);
-            //$store->setData($storetData)->save();/*todo */
 
             $store = $this->_storeFactory->create();
             $store->save($storeData);/*todo debug*/

@@ -50,7 +50,7 @@
     <fieldset name="store">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Sample Fieldset</item>
+                <item name="label" xsi:type="string" translate="true">Create new store</item>
             </item>
         </argument>
 

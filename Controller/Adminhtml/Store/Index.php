@@ -6,26 +6,25 @@
 
 namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 
-//use Magento\Backend\App\Action;
 use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
 use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class Index
  */
 class Index extends abstractStore
 {
-   // const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
-
     protected $resultPageFactory = false;
 
     /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        PageFactory $resultPageFactory
     )
     {
         parent::__construct($context);

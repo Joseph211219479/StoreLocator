@@ -4,12 +4,13 @@ namespace Joseph\StoreLocator\Model;
 use Joseph\StoreLocator\Api\Data\StoreInterface;
 use Joseph\StoreLocator\Api\StoreRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
+
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\ValidatorException;
 use Joseph\StoreLocator\Model\ResourceModel\Store;
-use Joseph\StoreLocator\Model\StoreFactory;
+use Joseph\StoreLocator\Model\ResourceModel\Store\CollectionFactory;
 
 class StoreRepository implements StoreRepositoryInterface
 {
@@ -19,15 +20,18 @@ class StoreRepository implements StoreRepositoryInterface
     /**
      * @var array
      */
-    private $stores = []; //todo try without an array
+    private $stores = [];
+    private CollectionFactory $collectionFactory;
 
     /**
      * @param ResourceModel\Store $storeResource
-     * @param Model\StoreFactory $storeFactory
+     * @param StoreFactory $storeFactory
+     * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Store $storeResource, StoreFactory $storeFactory){
+    public function __construct(Store $storeResource, StoreFactory $storeFactory,CollectionFactory $collectionFactory){
         $this->storeResource = $storeResource;
         $this->storeFactory = $storeFactory;
+        $this->collectionFactory = $collectionFactory;
     }
 
     /**
@@ -58,6 +62,9 @@ class StoreRepository implements StoreRepositoryInterface
      */
     public function save(StoreInterface $store)
     {
+        /*todo remove after test*/
+        //$grouped = $this->getListGroupedByProvince();
+
         if($store->getStoreId()){
             $store = $this->get($store->getStoreId())->addData($store->getData());
         }
@@ -110,6 +117,20 @@ class StoreRepository implements StoreRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        // TODO: Implement getList() method.
+    }
+
+    /**
+     * @return Store\Collection|mixed
+     */
+    public function getListGroupedByProvince(){
+        $collection = $this->collectionFactory->create();
+        $collection->addAttributeToSelect('*')->group('province')->load();
+        return $collection;
+       /*
+       $criteria = $this->searchCriteriaBuilder
+            ->group('province')
+            ->create();
+        return $criteria;
+       */
     }
 }
