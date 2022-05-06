@@ -10,7 +10,7 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\ValidatorException;
 use Joseph\StoreLocator\Model\ResourceModel\Store;
-use Joseph\StoreLocator\Model\ResourceModel\Store\CollectionFactory;
+use Joseph\StoreLocator\Model\ResourceModel\Store\Collection;
 
 class StoreRepository implements StoreRepositoryInterface
 {
@@ -21,17 +21,17 @@ class StoreRepository implements StoreRepositoryInterface
      * @var array
      */
     private $stores = [];
-    private CollectionFactory $collectionFactory;
+    private Collection $collection;
 
     /**
      * @param ResourceModel\Store $storeResource
      * @param StoreFactory $storeFactory
-     * @param CollectionFactory $collectionFactory
+     * @param Collection $collection
      */
-    public function __construct(Store $storeResource, StoreFactory $storeFactory,CollectionFactory $collectionFactory){
+    public function __construct(Store $storeResource, StoreFactory $storeFactory,Collection $collection){
         $this->storeResource = $storeResource;
         $this->storeFactory = $storeFactory;
-        $this->collectionFactory = $collectionFactory;
+        $this->collection = $collection;
     }
 
     /**
@@ -123,9 +123,9 @@ class StoreRepository implements StoreRepositoryInterface
      * @return Store\Collection|mixed
      */
     public function getListGroupedByProvince(){
-        $collection = $this->collectionFactory->create();
-        $collection->addAttributeToSelect('*')->group('province')->load();
-        return $collection;
+        //$collection = $this->collectionFactory->create();
+        $this->collection->group('province')->load();
+        return $this->collection;
        /*
        $criteria = $this->searchCriteriaBuilder
             ->group('province')
