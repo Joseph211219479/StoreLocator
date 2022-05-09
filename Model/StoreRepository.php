@@ -10,7 +10,7 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\ValidatorException;
 use Joseph\StoreLocator\Model\ResourceModel\Store;
-use Joseph\StoreLocator\Model\ResourceModel\Store\Collection;
+use Joseph\StoreLocator\Model\ResourceModel\Store\FrontendCollection as FrontendCollection;
 
 class StoreRepository implements StoreRepositoryInterface
 {
@@ -21,17 +21,17 @@ class StoreRepository implements StoreRepositoryInterface
      * @var array
      */
     private $stores = [];
-    private Collection $collection;
+    private  $storeCollection;
 
     /**
      * @param ResourceModel\Store $storeResource
      * @param StoreFactory $storeFactory
-     * @param Collection $collection
+     * @param FrontendCollection $collection
      */
-    public function __construct(Store $storeResource, StoreFactory $storeFactory,Collection $collection){
+    public function __construct(Store $storeResource, StoreFactory $storeFactory,FrontendCollection $collection){
         $this->storeResource = $storeResource;
         $this->storeFactory = $storeFactory;
-        $this->collection = $collection;
+        $this->storeCollection = $collection;
     }
 
     /**
@@ -123,14 +123,7 @@ class StoreRepository implements StoreRepositoryInterface
      * @return Store\Collection|mixed
      */
     public function getListGroupedByProvince(){
-        //$collection = $this->collectionFactory->create();
-        $this->collection->group('province')->load();
-        return $this->collection;
-       /*
-       $criteria = $this->searchCriteriaBuilder
-            ->group('province')
-            ->create();
-        return $criteria;
-       */
+        $this->storeCollection->setOrder('province');
+        return $this->storeCollection;
     }
 }

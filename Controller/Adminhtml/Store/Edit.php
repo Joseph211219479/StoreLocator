@@ -8,11 +8,11 @@ namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 
 use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
 use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\Auth\SessionFactory;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Joseph\StoreLocator\Controller\Adminhtml\Store\Store as abstractStore;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Joseph\StoreLocator\Model\StoreFactory;
-
 
 class Edit extends abstractStore implements HttpGetActionInterface
 {
@@ -26,13 +26,13 @@ class Edit extends abstractStore implements HttpGetActionInterface
     public function __construct(
         Context $context,
         StoreFactory $storeFactory,
-        \Magento\Backend\Model\Auth\SessionFactory $adminSession
+        SessionFactory $adminSession
     ) {
         parent::__construct($context);
 
         $this->_storeFactory = $storeFactory;
         if(!isset($this->_model)){
-            $this->_model = $storeFactory->create([]);//$this->_objectManager->create(\Joseph\StoreLocator\Model\Store::class);
+            $this->_model = $storeFactory->create([]);
         }
 
         $this->adminSession = $adminSession;
@@ -46,21 +46,6 @@ class Edit extends abstractStore implements HttpGetActionInterface
         $data = $this->getRequest()->getPostValue();
         $id = $this->getRequest()->getParam('id');
 
-        /** @var \Joseph\StoreLocator\Api\StoreRepositoryInterface $storeRepository */
-        $storeRepository = $this->_storeFactory->create();
-
-        if ($id) {
-            try {
-                //does not work because get returns a array
-               // $this->_model = $storeRepository->get($id);
-            } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
-                $this->messageManager->addErrorMessage(__('This store no longer exists.'));
-                $this->_redirect(parent::ROUTE_FRONTNAME.'/*');
-                return;
-            }
-        }
-
-        // set entered data if was error when we do save
         //todo get it to work with the factory
         //$this->adminSession->create()
         // $data = $this->adminSession->getPageData(true);

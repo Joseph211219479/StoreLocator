@@ -20,8 +20,6 @@ use Joseph\StoreLocator\Model\StoreFactory;
  */
 class Save extends abstractStore implements HttpPostActionInterface
 {
-    const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
-
     /**
      * @var DataPersistorInterface
      */
@@ -49,8 +47,6 @@ class Save extends abstractStore implements HttpPostActionInterface
         if(!isset($this->_model)){
             $this->_model = $storeFactory->create([]);
         }
-
-       // parent::__construct($context);
     }
 
     /**
@@ -66,19 +62,7 @@ class Save extends abstractStore implements HttpPostActionInterface
 
             try {
                 $data = $this->getRequest()->getPostValue();
-
-                if(isset($data['store'])){
-                    //todo move if to own function
-                    if(isset($data['store']['joseph_storelocator_id'])){
-                        if($data['store']['joseph_storelocator_id'] != ""){
-                            $this->_model->setStoreId($data['store']["joseph_storelocator_id"]);
-                        }
-                    }
-                    $this->_model->setName($data['store']["name"]);
-                    $this->_model->setEmail($data['store']["email"]);
-                    $this->_model->setTelephone($data['store']["telephone"]);
-                    $this->_model->setProvince($data['store']["province"]);
-                }
+                $this->setStoreModelData($data);
 
                 $this->dataPersistor->set('storelocator_store', $data);
 
@@ -105,5 +89,23 @@ class Save extends abstractStore implements HttpPostActionInterface
             }
         }
         $this->_redirect(parent::ROUTE_FRONTNAME.'/*/');
+    }
+
+    /**
+     * @param $data
+     * @return void
+     */
+    private function setStoreModelData($data){
+        if(isset($data['store'])){
+            if(isset($data['store']['joseph_storelocator_id'])){
+                if($data['store']['joseph_storelocator_id'] != ""){
+                    $this->_model->setStoreId($data['store']["joseph_storelocator_id"]);
+                }
+            }
+            $this->_model->setName($data['store']["name"]);
+            $this->_model->setEmail($data['store']["email"]);
+            $this->_model->setTelephone($data['store']["telephone"]);
+            $this->_model->setProvince($data['store']["province"]);
+        }
     }
 }

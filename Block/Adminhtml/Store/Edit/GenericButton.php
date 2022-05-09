@@ -5,11 +5,11 @@
  */
 namespace Joseph\StoreLocator\Block\Adminhtml\Store\Edit;
 
+use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 class GenericButton
 {
-
     protected DataPersistorInterface $dataPersistor;
 
     /**
@@ -29,10 +29,10 @@ class GenericButton
     /**
      * Constructor
      *
-     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param Context $context
      */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
+        Context $context,
         DataPersistorInterface $dataPersistor,
     ) {
         $this->dataPersistor = $dataPersistor;
@@ -58,7 +58,6 @@ class GenericButton
      */
     public function getStoreId()
     {
-
         $data = $this->dataPersistor->get('storelocator_store');
         if(isset($data)){
             return isset($data["id"]) ? $data["id"] : null;

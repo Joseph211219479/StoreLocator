@@ -1,8 +1,6 @@
 <?php
 namespace Joseph\StoreLocator\Api\Data;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
-
 /**
  * @api
  * @since 100.1.0
