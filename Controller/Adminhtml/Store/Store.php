@@ -5,14 +5,13 @@ namespace Joseph\StoreLocator\Controller\Adminhtml\Store;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Joseph\StoreLocator\Api\StoreRepositoryInterfaceFactory;
-//use Joseph\StoreLocator\Model\StoreFactory;
 
 abstract class Store extends Action {
     const ROUTE_FRONTNAME = "storelocator";
     const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
 
     protected $_storeFactory;
-    //protected $_model;
+    protected $_model;
 
     public function __construct(Context $context){
         parent::__construct($context);

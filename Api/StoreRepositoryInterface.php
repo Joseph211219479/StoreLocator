@@ -1,6 +1,7 @@
 <?php
 namespace Joseph\StoreLocator\Api;
 
+use Joseph\StoreLocator\Api\Data\StoreSearchResultInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Joseph\StoreLocator\Api\Data\StoreInterface;
 
@@ -35,8 +36,8 @@ interface StoreRepositoryInterface
     public function deleteById($storeId);
 
     /**
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Joseph\StoreLocator\Api\Data\StoreSearchResultInterface
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return StoreSearchResultInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
 

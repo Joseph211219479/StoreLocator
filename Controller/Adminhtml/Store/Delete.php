@@ -25,8 +25,6 @@ use Magento\Framework\Phrase;
 
 class Delete extends abstractStore implements HttpGetActionInterface, CsrfAwareActionInterface
 {
-    const ADMIN_RESOURCE = 'Joseph_StoreLocator::Store_Locator';
-
     protected $storeRepository;
 
     public function __construct(Context $context, StoreRepositoryInterface $storeRepository){
@@ -43,7 +41,6 @@ class Delete extends abstractStore implements HttpGetActionInterface, CsrfAwareA
         $id = $this->getRequest()->getParam('id');
         if ($id) {
             try {
-                //$store = $this->_storeFactory->create();
                 $this->storeRepository->deleteById($id);
 
                 $this->messageManager->addSuccessMessage(__('You deleted the store.'));
