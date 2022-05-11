@@ -1,51 +1,49 @@
 <?php
 
+//todo create external css
+//todo links to store page
+
+$storeCollection = $this->getStorelocatorCollection();
+$province = null;
+$divDataRoleContent ="<div data-role='content'>";
+
 $htmlString = "<div id=\"element\" class = 'page-main' data-mage-init='{\"accordion\":{\"openedState\": \"active\", \"collapsible\": true, \"active\": false, \"multipleCollapsible\": true}}'>";
 $html = '';
 $htmlCloseDiv = '</div>';
 
-$storeCollection = $this->getStorelocatorCollection();
-$province = null;
+foreach ($storeCollection as $key => $store) {
 
-$productCollection = $this->getStorelocatorCollection();
-
-
-foreach ($productCollection as $product) {
-    echo "<br>";
-    print_r($product->getData());
-    echo "<br>";
-}
-
-
-foreach ($storeCollection as $store) {
    if($province == null){
+
        $province = $store["province"];
 
-       $html .= '<div style="border:1px solid black; data-role="collapsible">';
+       $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
        $html .= '<div data-role="trigger">';
        $html .= '<span>'.$store["province"].'</span>';
-       $html .= '<div  data-role="content">'.$store['name'].'</div>';
+       $html .= $divDataRoleContent;
+       $html .= $divDataRoleContent.$store['name'].'</div>';
 
    }elseif($province == $store["province"] ){
-        $html .= '<div  data-role="content">'.$store['name'].'</div>';
+       $html .= '<div  data-role="content">'.$store['name'].'</div>';
     }else{
-        $province = $store["province"];
+       $province = $store["province"];
 
        $html .= $htmlCloseDiv;
        $html .= $htmlCloseDiv;
 
-        $html .= '<div style="border:1px solid black; data-role="collapsible">';
-        $html .= '<div data-role="trigger">';
-        $html .= '<span>'.$store["province"].'</span>';
-        $html .= '<div data-role="content">'.$store['name'].'</div>';
-
-
+       $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
+       $html .= '<div data-role="trigger">';
+       $html .= '<span>'.$store["province"].'</span>';
+       $html .= $divDataRoleContent.$store['name'].'</div>';
    }
-
     $htmlString .= $html;
     $html = '';
 }
+    //close open  divs on the if or the else
     $htmlString .= $htmlCloseDiv;
+    $htmlString .= $htmlCloseDiv;
+    $htmlString .= $htmlCloseDiv;
+    //close open div on line 5
     $htmlString .= $htmlCloseDiv;
 
     echo $htmlString;

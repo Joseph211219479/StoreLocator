@@ -3,7 +3,7 @@ namespace Joseph\StoreLocator\Block;
 use Magento\Framework\View\Element\Template;
 use Joseph\StoreLocator\Api\StoreRepositoryInterface;
 
-class Storelocator extends \Magento\Framework\View\Element\Template
+class Storelocator extends Template
 {
     private StoreRepositoryInterface $storeRepository;
 
