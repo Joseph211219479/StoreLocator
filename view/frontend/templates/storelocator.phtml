@@ -10,15 +10,15 @@ $divDataRoleContent ="<div data-role='content'>";
 $htmlString = "<div id=\"element\" class = 'page-main' data-mage-init='{\"accordion\":{\"openedState\": \"active\", \"collapsible\": true, \"active\": false, \"multipleCollapsible\": true}}'>";
 $html = '';
 $htmlCloseDiv = '</div>';
+$htmlDivDataRoleTrigger = '<div data-role="trigger">';
 
 foreach ($storeCollection as $key => $store) {
 
    if($province == null){
-
        $province = $store["province"];
 
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
-       $html .= '<div data-role="trigger">';
+       $html .= $htmlDivDataRoleTrigger;
        $html .= '<span>'.$store["province"].'</span>';
        $html .= $divDataRoleContent;
        $html .= $divDataRoleContent.$store['name'].'</div>';
@@ -31,15 +31,18 @@ foreach ($storeCollection as $key => $store) {
        $html .= $htmlCloseDiv;
        $html .= $htmlCloseDiv;
 
+       /*todo the same as the first if section above, move to function*/
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
-       $html .= '<div data-role="trigger">';
+       $html .= $htmlDivDataRoleTrigger;
        $html .= '<span>'.$store["province"].'</span>';
+       $html .= $divDataRoleContent;
        $html .= $divDataRoleContent.$store['name'].'</div>';
    }
     $htmlString .= $html;
     $html = '';
 }
-    //close open  divs on the if or the else
+
+    //close open  divs on the if and/or the else
     $htmlString .= $htmlCloseDiv;
     $htmlString .= $htmlCloseDiv;
     $htmlString .= $htmlCloseDiv;
@@ -48,3 +51,5 @@ foreach ($storeCollection as $key => $store) {
 
     echo $htmlString;
 ?>
+
+
