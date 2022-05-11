@@ -30,15 +30,15 @@ class ProvincesList implements ArrayInterface
     {
         return [
             '' => __('Please select...'),
-            'Eastern Cape' => __('Eastern Cape'),
-            'Free State' => __('Free State'),
-            'Gauteng' => __('Gauteng'),
-            'KwaZulu-Natal' => __('KwaZulu-Natal'),
-            'Limpopo' => __('Limpopo'),
-            'Mpumalanga' => __('Mpumalanga'),
-            'Northern Cape' => __('Northern Cape'),
-            'North West' => __('North West'),
-            'Western Cape' => __('Western Cape')
+            'EASTERN CAPE' => __('Eastern Cape'),
+            'FREE STATE' => __('Free State'),
+            'GAUTENG' => __('Gauteng'),
+            'KWAZULU-NATAL' => __('KwaZulu-Natal'),
+            'LIMPOPO' => __('Limpopo'),
+            'MPUMALANGA' => __('Mpumalanga'),
+            'NORTHERN CAPE' => __('Northern Cape'),
+            'NORTH WEST' => __('North West'),
+            'WESTERN CAPE' => __('Western Cape')
         ];
     }
 }
