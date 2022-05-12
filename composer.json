@@ -1,0 +1,23 @@
+{
+    "name": "joseph/module-store-locator",
+    "description": "Module to manage physical store locations and display it on the frontend.",
+    "require": {
+        "php": ">=7.3",
+        "magento/framework": "*",
+        "magento/module-backend": "*",
+        "magento/module-store": "*"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Joseph\\StoreLocator\\": ""
+        }
+    }
+}
