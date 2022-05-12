@@ -5,12 +5,14 @@
 
 $storeCollection = $this->getStorelocatorCollection();
 $province = null;
-$divDataRoleContent ="<div data-role='content'>";
 
 $htmlString = "<div id=\"element\" class = 'page-main' data-mage-init='{\"accordion\":{\"openedState\": \"active\", \"collapsible\": true, \"active\": false, \"multipleCollapsible\": true}}'>";
 $html = '';
-$htmlCloseDiv = '</div>';
-$htmlDivDataRoleTrigger = '<div data-role="trigger">';
+
+const DIV_DATA_ROLE_CONTENT = "<div  style='color:#ee4141' data-role='content'>";
+const DIV_DATA_ROLE_TRIGGER = '<div data-role="trigger">';
+const CLOSE_DIV = '</div>';
+const CLOSE_SPAN = '</span>';
 
 foreach ($storeCollection as $key => $store) {
 
@@ -18,36 +20,36 @@ foreach ($storeCollection as $key => $store) {
        $province = $store["province"];
 
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
-       $html .= $htmlDivDataRoleTrigger;
-       $html .= '<span>'.$store["province"].'</span>';
-       $html .= $divDataRoleContent;
-       $html .= $divDataRoleContent.$store['name'].'</div>';
+       $html .= DIV_DATA_ROLE_TRIGGER;
+       $html .= '<span  style="color:#c9c9e0">' .$store["province"].CLOSE_SPAN;
+       $html .= DIV_DATA_ROLE_CONTENT;
+       $html .= DIV_DATA_ROLE_CONTENT.$store['name'].CLOSE_DIV;
 
    }elseif($province == $store["province"] ){
-       $html .= '<div  data-role="content">'.$store['name'].'</div>';
+       $html .= '<div  data-role="content">'.$store['name'].CLOSE_DIV;
     }else{
        $province = $store["province"];
 
-       $html .= $htmlCloseDiv;
-       $html .= $htmlCloseDiv;
+       $html .= CLOSE_DIV;
+       $html .= CLOSE_DIV;
 
        /*todo the same as the first if section above, move to function*/
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
-       $html .= $htmlDivDataRoleTrigger;
-       $html .= '<span>'.$store["province"].'</span>';
-       $html .= $divDataRoleContent;
-       $html .= $divDataRoleContent.$store['name'].'</div>';
+       $html .= DIV_DATA_ROLE_TRIGGER;
+       $html .= '<span  style="color:#c9c9e0">'.$store["province"].CLOSE_SPAN;
+       $html .= DIV_DATA_ROLE_CONTENT;
+       $html .= DIV_DATA_ROLE_CONTENT.$store['name'].CLOSE_DIV;
    }
     $htmlString .= $html;
     $html = '';
 }
 
     //close open divs on the if and/or the else
-    $htmlString .= $htmlCloseDiv;
-    $htmlString .= $htmlCloseDiv;
-    $htmlString .= $htmlCloseDiv;
+    $htmlString .= CLOSE_DIV;
+    $htmlString .= CLOSE_DIV;
+    $htmlString .= CLOSE_DIV;
     //close open div of $htmlString
-    $htmlString .= $htmlCloseDiv;
+    $htmlString .= CLOSE_DIV;
 
     echo $htmlString;
 ?>
