@@ -3,6 +3,8 @@
 //todo create external css
 //todo links to store page
 
+//todo the stores should be in a table.
+
 $storeCollection = $this->getStorelocatorCollection();
 $province = null;
 
@@ -13,6 +15,7 @@ const DIV_DATA_ROLE_CONTENT = "<div  style='color:#ee4141' data-role='content'>"
 const DIV_DATA_ROLE_TRIGGER = '<div data-role="trigger">';
 const CLOSE_DIV = '</div>';
 const CLOSE_SPAN = '</span>';
+const A_HREF_CLOSE = "</a>";
 
 foreach ($storeCollection as $key => $store) {
 
@@ -21,12 +24,17 @@ foreach ($storeCollection as $key => $store) {
 
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
        $html .= DIV_DATA_ROLE_TRIGGER;
-       $html .= '<span  style="color:#c9c9e0">' .$store["province"].CLOSE_SPAN;
+       $html .= '<span  style="background-color:#c9c9e0">' .$store["province"].CLOSE_SPAN;
        $html .= DIV_DATA_ROLE_CONTENT;
+
+       $html .= "<a href=".$this->getStoreHrefString($key) . ">";
        $html .= DIV_DATA_ROLE_CONTENT.$store['name'].CLOSE_DIV;
+       $html .= A_HREF_CLOSE;
 
    }elseif($province == $store["province"] ){
+       $html .= "<a href=".$this->getStoreHrefString($key) . ">";
        $html .= '<div  data-role="content">'.$store['name'].CLOSE_DIV;
+       $html .= A_HREF_CLOSE;
     }else{
        $province = $store["province"];
 
@@ -36,9 +44,13 @@ foreach ($storeCollection as $key => $store) {
        /*todo the same as the first if section above, move to function*/
        $html .= '<div class="toggler'.$key.'" style="border:1px solid black" data-role="collapsible">';
        $html .= DIV_DATA_ROLE_TRIGGER;
-       $html .= '<span  style="color:#c9c9e0">'.$store["province"].CLOSE_SPAN;
+       $html .= '<span  style="background-color:#c9c9e0">'.$store["province"].CLOSE_SPAN;
        $html .= DIV_DATA_ROLE_CONTENT;
+
+       $html .= "<a href=".$this->getStoreHrefString($key) . ">";
        $html .= DIV_DATA_ROLE_CONTENT.$store['name'].CLOSE_DIV;
+       $html .= A_HREF_CLOSE;
+
    }
     $htmlString .= $html;
     $html = '';

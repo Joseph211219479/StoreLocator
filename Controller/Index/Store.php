@@ -9,7 +9,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends Action
+class Store extends Action
 {
     /** @var  Page */
     protected $resultPageFactory;
@@ -29,8 +29,9 @@ class Index extends Action
      */
     public function execute()
     {
+        /*todo load the specific store page*/
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend(__('List of physical stores'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Store view'));
         return $resultPage;
     }
 }
